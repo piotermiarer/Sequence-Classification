@@ -3,7 +3,6 @@ from sequence_transformer import SequenceTransformer
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 
-# import numpy as np
 from sklearn.svm import SVC
 
 
@@ -28,8 +27,6 @@ class SVMTransformer(SequenceTransformer):
 
     def transform(self, raw_data):
         # count vectorizer
-        # X = self.vectorizer.fit_transform(raw_data)
-        # return X.toarray()
+        X = self.vectorizer.fit_transform(raw_data)
+        return X.toarray()
 
-        ## NOT WORKING RIGHT NOW
-        return raw_data
