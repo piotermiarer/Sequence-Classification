@@ -36,3 +36,7 @@ class NeuralNetworksTransformer(SequenceTransformer):
     def transform(self, X):
         # truncate and pad input sequences
         return sequence.pad_sequences(X, maxlen=self.max_review_length)
+
+    def transform_to_predict(self, X):
+        return sequence.pad_sequences(X, maxlen=self.max_review_length)
+
