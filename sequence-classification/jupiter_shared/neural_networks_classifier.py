@@ -33,10 +33,10 @@ class NeuralNetworksTransformer(SequenceTransformer):
     def __init__(self, max_review_length=500):
         self.max_review_length = max_review_length
 
-    def fit_transform(self, X):
+    def transform(self, X):
         # truncate and pad input sequences
         return sequence.pad_sequences(X, maxlen=self.max_review_length)
 
-    def transform(self, X):
+    def transform_to_predict(self, X):
         return sequence.pad_sequences(X, maxlen=self.max_review_length)
 

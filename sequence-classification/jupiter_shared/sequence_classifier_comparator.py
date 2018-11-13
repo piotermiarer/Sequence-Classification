@@ -26,7 +26,7 @@ class SequenceClassifierComparator:
         self.predictions = []
         for classifier, transformer in self.classifiers:
             if transformer is not None:
-                y_pred = classifier.predict(transformer.transform(X))
+                y_pred = classifier.predict(transformer.transform_to_predict(X))
             else:
                 y_pred = classifier.predict(X)
             self.predictions.append((classifier.name, y_pred))
