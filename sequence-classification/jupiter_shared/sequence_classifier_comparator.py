@@ -18,7 +18,7 @@ class SequenceClassifierComparator:
     def fit_classifiers(self, X_train, y_train):
         for classifier, transformer in self.classifiers:
             if transformer is not None:
-                classifier.fit(transformer.transform(X_train), y_train)
+                classifier.fit(transformer.fit_transform(X_train), y_train)
             else:
                 classifier.fit(X_train, y_train)
 
@@ -26,7 +26,7 @@ class SequenceClassifierComparator:
         self.predictions = []
         for classifier, transformer in self.classifiers:
             if transformer is not None:
-                y_pred = classifier.predict(transformer.transform_to_predict(X))
+                y_pred = classifier.predict(transformer.transform(X))
             else:
                 y_pred = classifier.predict(X)
             self.predictions.append((classifier.name, y_pred))
